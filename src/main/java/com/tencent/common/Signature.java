@@ -27,7 +27,7 @@ public class Signature {
         Field[] fields = cls.getDeclaredFields();
         for (Field f : fields) {
             f.setAccessible(true);
-            if (f.get(o) != null && f.get(o) != "") {
+            if (f.get(o) != null && !f.get(o).equals("")) {
                 list.add(f.getName() + "=" + f.get(o) + "&");
             }
         }
@@ -49,7 +49,7 @@ public class Signature {
     public static String getSign(Map<String,Object> map){
         ArrayList<String> list = new ArrayList<String>();
         for(Map.Entry<String,Object> entry:map.entrySet()){
-            if(entry.getValue()!=""){
+            if(!entry.getValue().equals("")){
                 list.add(entry.getKey() + "=" + entry.getValue() + "&");
             }
         }
